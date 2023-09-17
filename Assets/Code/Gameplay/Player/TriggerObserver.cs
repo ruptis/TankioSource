@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
-namespace NewTankio.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player
 {
-    public class TriggerObserver : MonoBehaviour
+    public sealed class TriggerObserver : MonoBehaviour
     {
         public Action<Collider2D> TriggerEntered;
         public Action<Collider2D> TriggerStayed;

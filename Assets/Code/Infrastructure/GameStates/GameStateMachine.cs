@@ -1,5 +1,5 @@
-﻿using NewTankio.Tools.StateMachine;
-namespace NewTankio.Infrastructure.GameStates
+﻿using NewTankio.Code.Tools.StateMachine;
+namespace NewTankio.Code.Infrastructure.GameStates
 {
     public sealed class GameStateMachine : StateMachine<IGameState>
     {

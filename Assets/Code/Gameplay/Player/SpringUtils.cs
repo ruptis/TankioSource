@@ -1,4 +1,4 @@
-﻿namespace NewTankio.Gameplay.Player
+﻿namespace NewTankio.Code.Gameplay.Player
 {
     public static class SpringUtils
     {

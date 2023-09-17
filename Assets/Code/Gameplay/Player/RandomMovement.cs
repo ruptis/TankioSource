@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-namespace NewTankio.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player
 {
-    public class RandomMovement : MonoBehaviour
+    public sealed class RandomMovement : MonoBehaviour
     {
         private Vector2 _direction;
         private float _cooldown;

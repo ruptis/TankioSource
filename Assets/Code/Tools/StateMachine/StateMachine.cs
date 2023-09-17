@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-namespace NewTankio.Tools.StateMachine
+namespace NewTankio.Code.Tools.StateMachine
 {
     public abstract class StateMachine<TStateType>
     {

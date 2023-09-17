@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
-namespace NewTankio.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player
 {
-    public class Knockback : MonoBehaviour
+    public sealed class Knockback : MonoBehaviour
     {
         public Movement Movement;
         public TriggerObserver TriggerObserver;
         public float BounceFactor = 1f;
 
-        private void Awake()
+        private void OnEnable()
         {
             TriggerObserver.TriggerStayed += OnTriggerStayed;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             TriggerObserver.TriggerStayed -= OnTriggerStayed;
         }

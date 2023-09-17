@@ -1,9 +1,9 @@
-﻿using NewTankio.Infrastructure.GameStates;
-using NewTankio.Services.InputService;
-using NewTankio.Tools.StateMachine;
+﻿using NewTankio.Code.Infrastructure.GameStates;
+using NewTankio.Code.Services.InputService;
+using NewTankio.Code.Tools.StateMachine;
 using VContainer;
 using VContainer.Unity;
-namespace NewTankio.Infrastructure
+namespace NewTankio.Code.Infrastructure
 {
     public sealed class GameScope : LifetimeScope
     {
@@ -14,6 +14,7 @@ namespace NewTankio.Infrastructure
             builder.Register<BootstrapGameState>(Lifetime.Singleton);
             builder.Register<IStateFactory<IGameState>, GameStateFactory>(Lifetime.Singleton);
             builder.Register<StateMachine<IGameState>, GameStateMachine>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<GameRunner>();
         }
     }
 }

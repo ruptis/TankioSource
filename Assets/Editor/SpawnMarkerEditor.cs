@@ -1,5 +1,5 @@
-﻿using DefaultNamespace;
-using NewTankio;
+﻿using NewTankio;
+using NewTankio.Code.Spawner;
 using UnityEditor;
 using UnityEngine;
 namespace Editor

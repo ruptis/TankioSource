@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace NewTankio.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player
 {
     public struct PositionDamper
     {

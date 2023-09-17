@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace NewTankio.Services.InputService
+namespace NewTankio.Code.Services.InputService
 {
     public interface IInputService
     {

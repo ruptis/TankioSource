@@ -1,23 +1,26 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-public static class PerlinNoiseGeneration
+namespace NewTankio.Code.Spawner
 {
-    public static IEnumerable<Vector2> GeneratePoints(float radius, Vector2 boundsSize)
+    public static class PerlinNoiseGeneration
     {
-        var points = new List<Vector2>();
-        var grid = new Vector2Int((int)(boundsSize.x / radius), (int)(boundsSize.y / radius));
-        for (var x = 0; x < grid.x; x++)
+        public static IEnumerable<Vector2> GeneratePoints(float radius, Vector2 boundsSize)
         {
-            for (var y = 0; y < grid.y; y++)
+            var points = new List<Vector2>();
+            var grid = new Vector2Int((int)(boundsSize.x / radius), (int)(boundsSize.y / radius));
+            for (var x = 0; x < grid.x; x++)
             {
-                var point = new Vector2(x, y) * radius;
-                var noise = Mathf.PerlinNoise(point.x, point.y);
-                if (noise > 0.5f)
+                for (var y = 0; y < grid.y; y++)
                 {
-                    points.Add(point);
+                    var point = new Vector2(x, y) * radius;
+                    var noise = Mathf.PerlinNoise(point.x, point.y);
+                    if (noise > 0.5f)
+                    {
+                        points.Add(point);
+                    }
                 }
             }
+            return points;
         }
-        return points;
     }
 }

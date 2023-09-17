@@ -1,4 +1,4 @@
-﻿namespace NewTankio.Infrastructure.GameStates
+﻿namespace NewTankio.Code.Infrastructure.GameStates
 {
     public interface IGameState
     {}

@@ -1,13 +1,13 @@
-﻿using NewTankio.Services.InputService;
+﻿using NewTankio.Code.Services.InputService;
 using UnityEngine;
 using VContainer;
-namespace NewTankio.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player
 {
-    public class PlayerInput : MonoBehaviour
+    public sealed class PlayerInput : MonoBehaviour
     {
         private IInputService _inputService;
         public Movement Movement;
-        
+
         [Inject]
         public void Construst(IInputService inputService)
         {

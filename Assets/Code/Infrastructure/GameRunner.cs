@@ -1,15 +1,19 @@
-﻿using NewTankio.Infrastructure.GameStates;
-using NewTankio.Tools.StateMachine;
-using VContainer;
+﻿using NewTankio.Code.Infrastructure.GameStates;
+using NewTankio.Code.Tools.StateMachine;
 using VContainer.Unity;
-namespace NewTankio.Infrastructure
+namespace NewTankio.Code.Infrastructure
 {
-    public sealed class GameRunner : LifetimeScope
+    public sealed class GameRunner : IStartable
     {
-        private void Start()
+        private readonly StateMachine<IGameState> _stateMachine;
+        public GameRunner(StateMachine<IGameState> stateMachine)
         {
-            var stateMachine = Container.Resolve<StateMachine<IGameState>>();
-            stateMachine.Enter<BootstrapGameState>();
+            _stateMachine = stateMachine;
+        }
+
+        public void Start()
+        {
+            _stateMachine.Enter<BootstrapGameState>();
         }
     }
 }

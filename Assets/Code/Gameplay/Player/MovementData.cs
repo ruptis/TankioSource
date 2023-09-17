@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-namespace NewTankio.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player
 {
     [Serializable]
     public struct MovementData

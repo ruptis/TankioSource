@@ -1,6 +1,7 @@
-﻿using NewTankio.Services.InputService;
-using NewTankio.Tools.StateMachine;
-namespace NewTankio.Infrastructure.GameStates
+﻿using NewTankio.Code.Services;
+using NewTankio.Code.Services.InputService;
+using NewTankio.Code.Tools.StateMachine;
+namespace NewTankio.Code.Infrastructure.GameStates
 {
     public class BootstrapGameState : IGameState, IState
     {

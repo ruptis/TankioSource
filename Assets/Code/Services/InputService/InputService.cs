@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-namespace NewTankio.Services.InputService
+namespace NewTankio.Code.Services.InputService
 {
     public sealed class InputService : IInputService
     {

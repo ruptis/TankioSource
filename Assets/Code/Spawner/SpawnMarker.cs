@@ -1,6 +1,5 @@
-﻿using DefaultNamespace;
-using UnityEngine;
-namespace NewTankio
+﻿using UnityEngine;
+namespace NewTankio.Code.Spawner
 {
     public class SpawnMarker : MonoBehaviour
     {

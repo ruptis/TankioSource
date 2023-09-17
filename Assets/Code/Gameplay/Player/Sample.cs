@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-namespace NewTankio.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player
 {
     /// <summary>
     /// An example top-down movement controller that uses a Kinematic Rigidbody2D.

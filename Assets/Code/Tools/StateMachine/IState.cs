@@ -1,4 +1,4 @@
-namespace NewTankio.Tools.StateMachine
+namespace NewTankio.Code.Tools.StateMachine
 {
     public interface IState : IExitable
     {

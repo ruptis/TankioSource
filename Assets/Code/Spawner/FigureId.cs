@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace
+﻿namespace NewTankio.Code.Spawner
 {
     public enum FigureId
     {

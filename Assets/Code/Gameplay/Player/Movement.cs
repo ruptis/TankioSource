@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-namespace NewTankio.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player
 {
-    public class Movement : MonoBehaviour
+    public sealed class Movement : MonoBehaviour
     {
         private Vector2 _desiredMovement;
         private PositionDamper _damper;

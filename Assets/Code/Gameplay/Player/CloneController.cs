@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 namespace NewTankio.Code.Gameplay.Player
 {
-    public class CloneController : MonoBehaviour
+    public sealed class CloneController : MonoBehaviour
     {
         private Transform _parentTransform;
         private Quaternion _previousParentRotation;

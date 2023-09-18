@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using NewTankio.Code.Services.MapBoundaries;
 using UnityEngine;
 using VContainer;
@@ -10,8 +9,9 @@ namespace NewTankio.Code.Gameplay.Player
     {
         private IMapBoundaries _mapBoundaries;
         private Boundary[] _boundariesBuffer;
-        private HashSet<Boundary> _currentIntersectedBoundaries;
-        private HashSet<Boundary> _previousIntersectedBoundaries;
+        private List<Boundary> _currentIntersectedBoundaries;
+        private List<Boundary> _previousIntersectedBoundaries;
+        private HashSet<Boundary> _tempHashSet;
 
         [SerializeField] private RectAreaMarker _rectArea;
 
@@ -23,8 +23,9 @@ namespace NewTankio.Code.Gameplay.Player
         {
             _mapBoundaries = mapBoundaries;
             _boundariesBuffer = new Boundary[_mapBoundaries.BoundariesCount];
-            _currentIntersectedBoundaries = new HashSet<Boundary>(_mapBoundaries.BoundariesCount);
-            _previousIntersectedBoundaries = new HashSet<Boundary>(_mapBoundaries.BoundariesCount);
+            _currentIntersectedBoundaries = new List<Boundary>(_mapBoundaries.BoundariesCount);
+            _previousIntersectedBoundaries = new List<Boundary>(_mapBoundaries.BoundariesCount);
+            _tempHashSet = new HashSet<Boundary>(_mapBoundaries.BoundariesCount);
         }
         
         private void LateUpdate()
@@ -39,20 +40,28 @@ namespace NewTankio.Code.Gameplay.Player
 
         private void InvokeEntered()
         {
-            foreach (Boundary boundary in _previousIntersectedBoundaries.Where(boundary => !_currentIntersectedBoundaries.Contains(boundary)))
+            _tempHashSet.Clear();
+            _tempHashSet.UnionWith(_previousIntersectedBoundaries);
+            _tempHashSet.ExceptWith(_currentIntersectedBoundaries);
+            
+            foreach (Boundary boundary in _tempHashSet)
                 BoundaryEntered?.Invoke(boundary);
         }
         
         private void InvokeExited()
         {
-            foreach (Boundary boundary in _currentIntersectedBoundaries.Where(boundary => !_previousIntersectedBoundaries.Contains(boundary)))
+            _tempHashSet.Clear();
+            _tempHashSet.UnionWith(_currentIntersectedBoundaries);
+            _tempHashSet.ExceptWith(_previousIntersectedBoundaries);
+
+            foreach (Boundary boundary in _tempHashSet)
                 BoundaryExited?.Invoke(boundary);
         }
 
         private void UpdatePreviusSet()
         {
             _previousIntersectedBoundaries.Clear();
-            _previousIntersectedBoundaries.UnionWith(_currentIntersectedBoundaries);
+            _previousIntersectedBoundaries.AddRange(_currentIntersectedBoundaries);
         }
 
         private void UpdateCurrentSet(int count)

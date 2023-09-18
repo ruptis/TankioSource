@@ -4615,9 +4615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 430246671}
-  - component: {fileID: 430246674}
   - component: {fileID: 430246673}
-  - component: {fileID: 430246672}
   m_Layer: 0
   m_Name: Clones
   m_TagString: Untagged
@@ -4643,19 +4641,6 @@ Transform:
   - {fileID: 908498803}
   m_Father: {fileID: 1895975878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &430246672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430246670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84c63926a3ef40f08abd5602ea03f433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoundaryObserver: {fileID: 430246674}
 --- !u!114 &430246673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4668,24 +4653,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d973b2ff00f94923a9483a63afb9e366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boundaryObserver: {fileID: 430246674}
+  _boundaryObserver: {fileID: 1895975897}
   _cloneTransforms:
   - {fileID: 1722674962}
   - {fileID: 331455500}
   - {fileID: 908498803}
---- !u!114 &430246674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 430246670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da0f2355fc89a0141a8fb7b69c5e9a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rectArea: {fileID: 697958684}
 --- !u!4 &432406482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1243410359745952884, guid: dd31ca259027a4d48971552051d2f819, type: 3}
@@ -6751,7 +6723,7 @@ GameObject:
   - component: {fileID: 605685360}
   - component: {fileID: 605685362}
   - component: {fileID: 605685361}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7229,7 +7201,7 @@ GameObject:
   - component: {fileID: 655586552}
   - component: {fileID: 655586554}
   - component: {fileID: 655586553}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: RawImage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13263,7 +13235,7 @@ GameObject:
   - component: {fileID: 1131599317}
   - component: {fileID: 1131599319}
   - component: {fileID: 1131599318}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: RawImage (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18068,7 +18040,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540513543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -18077,7 +18049,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 0
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 3
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -19128,7 +19100,6 @@ GameObject:
   - component: {fileID: 1653826227}
   - component: {fileID: 1653826229}
   - component: {fileID: 1653826228}
-  - component: {fileID: 1653826230}
   m_Layer: 0
   m_Name: Clones
   m_TagString: Untagged
@@ -19184,19 +19155,6 @@ MonoBehaviour:
   - {fileID: 932360589}
   - {fileID: 1518121561}
   - {fileID: 1903075070}
---- !u!114 &1653826230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653826226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84c63926a3ef40f08abd5602ea03f433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoundaryObserver: {fileID: 1653826228}
 --- !u!4 &1661150235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3933368206059544357, guid: 5086e2f6ff108b946af8f7832ab5c2c4, type: 3}
@@ -21474,9 +21432,10 @@ GameObject:
   - component: {fileID: 1895975886}
   - component: {fileID: 1895975890}
   - component: {fileID: 1895975887}
+  - component: {fileID: 1895975897}
   - component: {fileID: 1895975884}
   - component: {fileID: 1895975889}
-  - component: {fileID: 1895975895}
+  - component: {fileID: 1895975898}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -21549,7 +21508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292fc53328cc4abfb9a6d87881e514ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
+  Speed: 10
 --- !u!114 &1895975887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21617,18 +21576,6 @@ MonoBehaviour:
   Movement: {fileID: 1895975886}
   TriggerObserver: {fileID: 1895975887}
   BounceFactor: 1
---- !u!114 &1895975895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895975877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c23c8fbca60d46b5b053a33accf33d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1895975896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21641,6 +21588,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8ebed554ba441c92914890aa83df18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1895975897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895975877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0f2355fc89a0141a8fb7b69c5e9a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rectArea: {fileID: 697958684}
+--- !u!114 &1895975898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895975877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0108efa8dd2e47c9a190ffbfbf87efe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 1540513547}
 --- !u!4 &1899085232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3933368206059544357, guid: 5086e2f6ff108b946af8f7832ab5c2c4, type: 3}
@@ -22705,7 +22678,7 @@ GameObject:
   - component: {fileID: 1966957426}
   - component: {fileID: 1966957425}
   - component: {fileID: 1966957424}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22769,10 +22742,10 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1919336817
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1966957427

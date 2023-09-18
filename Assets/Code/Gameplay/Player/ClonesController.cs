@@ -5,7 +5,7 @@ using UnityEngine;
 using VContainer;
 namespace NewTankio.Code.Gameplay.Player
 {
-    public class ClonesController : MonoBehaviour
+    public sealed class ClonesController : MonoBehaviour
     {
         private const int MaxClones = 3;
 

@@ -1,5 +1,4 @@
-﻿using NewTankio.Code.Services;
-using NewTankio.Code.Services.CoordinateWrapper;
+﻿using NewTankio.Code.Services.CoordinateWrapper;
 using UnityEngine;
 using VContainer;
 namespace NewTankio.Code.Gameplay.Player
@@ -12,7 +11,9 @@ namespace NewTankio.Code.Gameplay.Player
         public void Construct(ICoordinateWrapper coordinateWrapper) 
             => _coordinateWrapper = coordinateWrapper;
 
-        private void Update() 
-            => transform.position = _coordinateWrapper.WrapPoint(transform.position);
+        private void Update()
+        {
+            transform.position = _coordinateWrapper.WrapPoint(transform.position);
+        }
     }
 }

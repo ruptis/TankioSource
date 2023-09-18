@@ -19,7 +19,7 @@ namespace NewTankio.Code.Gameplay.Player
         public void Deactivate()
         {
             _transform.transform.localPosition = Vector3.zero;
-            _transform.gameObject.SetActive(false);
+            //_transform.gameObject.SetActive(false);
         }
     }
 }

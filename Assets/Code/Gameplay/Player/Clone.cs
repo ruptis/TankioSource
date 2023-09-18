@@ -3,23 +3,23 @@ namespace NewTankio.Code.Gameplay.Player
 {
     public readonly struct Clone
     {
-        private readonly SpriteRenderer _spriteRenderer;
+        private readonly Transform _transform;
 
-        public Clone(SpriteRenderer spriteRenderer)
+        public Clone(Transform transform)
         {
-            _spriteRenderer = spriteRenderer;
+            _transform = transform;
         }
 
         public void Activate(in Vector3 localPosition)
         {
-            _spriteRenderer.transform.localPosition = localPosition;
-            _spriteRenderer.enabled = true;
+            _transform.transform.localPosition = localPosition;
+            _transform.gameObject.SetActive(true);
         }
 
         public void Deactivate()
         {
-            _spriteRenderer.transform.localPosition = Vector3.zero;
-            _spriteRenderer.enabled = false;
+            _transform.transform.localPosition = Vector3.zero;
+            _transform.gameObject.SetActive(false);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace NewTankio.Code.Services
+namespace NewTankio.Code.Services.CoordinateWrapper
 {
     public interface ICoordinateWrapper
     {

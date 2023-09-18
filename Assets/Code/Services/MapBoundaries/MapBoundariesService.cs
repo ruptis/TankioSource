@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-namespace NewTankio.Code.Services
+namespace NewTankio.Code.Services.MapBoundaries
 {
     public class MapBoundariesService : IMapBoundaries
     {
@@ -33,11 +33,11 @@ namespace NewTankio.Code.Services
             return _intersectionPoints[(boundary, nextBoundary)];
         }
         
-        public int OverlapBoundaries(in Bounds bounds, IList<Boundary> boundaries)
+        public int OverlapBoundaries(in Rect rect, IList<Boundary> boundaries)
         {
             var count = 0;
             foreach (Boundary boundary in _boundaries)
-                if (boundary.Intersects(bounds))
+                if (boundary.Intersects(rect))
                     boundaries[count++] = boundary;
 
             return count;

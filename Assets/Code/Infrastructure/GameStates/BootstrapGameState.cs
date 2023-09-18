@@ -1,5 +1,4 @@
-﻿using NewTankio.Code.Services;
-using NewTankio.Code.Services.InputService;
+﻿using NewTankio.Code.Services.InputService;
 using NewTankio.Code.Tools.StateMachine;
 namespace NewTankio.Code.Infrastructure.GameStates
 {

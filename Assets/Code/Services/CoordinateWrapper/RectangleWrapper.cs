@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-namespace NewTankio.Code.Services
+﻿using NewTankio.Code.Services.MapBoundaries;
+using UnityEngine;
+namespace NewTankio.Code.Services.CoordinateWrapper
 {
     public class RectangleWrapper : ICoordinateWrapper
     {

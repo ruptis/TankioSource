@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NewTankio.Code.Services;
+using NewTankio.Code.Services.MapBoundaries;
 using UnityEngine;
 using VContainer;
 namespace NewTankio.Code.Gameplay.Player
@@ -13,7 +13,7 @@ namespace NewTankio.Code.Gameplay.Player
         private HashSet<Boundary> _currentIntersectedBoundaries;
         private HashSet<Boundary> _previousIntersectedBoundaries;
 
-        [SerializeField] private Collider2D _collider;
+        [SerializeField] private RectAreaMarker _rectArea;
 
         public event Action<Boundary> BoundaryExited;
         public event Action<Boundary> BoundaryEntered;
@@ -27,9 +27,9 @@ namespace NewTankio.Code.Gameplay.Player
             _previousIntersectedBoundaries = new HashSet<Boundary>(_mapBoundaries.BoundariesCount);
         }
         
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-            var count = _mapBoundaries.OverlapBoundaries(_collider.bounds, _boundariesBuffer);
+            var count = _mapBoundaries.OverlapBoundaries(_rectArea.Rect, _boundariesBuffer);
             
             UpdateCurrentSet(count);
             InvokeEntered();
@@ -62,4 +62,5 @@ namespace NewTankio.Code.Gameplay.Player
                 _currentIntersectedBoundaries.Add(_boundariesBuffer[i]);
         }
     }
+
 }

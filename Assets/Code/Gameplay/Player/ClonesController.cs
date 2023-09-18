@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NewTankio.Code.Services;
+using NewTankio.Code.Services.MapBoundaries;
 using UnityEngine;
 using VContainer;
 namespace NewTankio.Code.Gameplay.Player
@@ -10,7 +10,7 @@ namespace NewTankio.Code.Gameplay.Player
         private const int MaxClones = 3;
 
         [SerializeField] private BoundaryObserver _boundaryObserver;
-        [SerializeField] private SpriteRenderer[] _cloneSprites = new SpriteRenderer[MaxClones];
+        [SerializeField] private Transform[] _cloneTransforms = new Transform[MaxClones];
 
         private readonly Queue<Clone> _clones = new(MaxClones);
         private Dictionary<Boundary, Clone> _boundaryWithClone;
@@ -25,11 +25,11 @@ namespace NewTankio.Code.Gameplay.Player
             _intersectedBoundaries = new HashSet<Boundary>(_mapBoundariesService.BoundariesCount);
             _boundaryWithClone = new Dictionary<Boundary, Clone>(_mapBoundariesService.BoundariesCount);
         }
-        
+
         private void Start()
         {
-            foreach (SpriteRenderer spriteRenderer in _cloneSprites)
-                _clones.Enqueue(new Clone(spriteRenderer));
+            foreach (Transform cloneTransform in _cloneTransforms)
+                _clones.Enqueue(new Clone(cloneTransform));
         }
 
         private void OnEnable()
@@ -104,20 +104,20 @@ namespace NewTankio.Code.Gameplay.Player
         private void ProcessBoundaryClone(Boundary boundary, Vector2 position, in Clone clone)
         {
             Vector2 closestPoint = boundary.ClosestPoint(position);
-            var distance = Vector2.Distance(position, closestPoint);
             Vector2 oppositeClosestPoint = GetOppositeClosestPoint(boundary, position);
             Vector2 direction = GetDirection(oppositeClosestPoint, closestPoint);
-            Vector3 cloneLocalPosition = GetCloneLocalPosition(oppositeClosestPoint, direction, distance);
+            var distance = Vector2.Distance(oppositeClosestPoint, closestPoint);
+            Vector3 cloneLocalPosition = GetCloneLocalPosition(direction, distance);
             clone.Activate(cloneLocalPosition);
         }
 
         private void ProcessCornerClone(Boundary firstBoundary, Boundary secondBoundary, Vector2 position, in Clone clone)
         {
             Vector2 cornerPoint = _mapBoundariesService.GetIntersectionPoint(firstBoundary, secondBoundary);
-            var distanceToCorner = Vector2.Distance(position, cornerPoint);
             Vector2 oppositeCornerPoint = GetOppositeCornerPoint(firstBoundary, secondBoundary);
             Vector2 cornerDirection = GetDirection(oppositeCornerPoint, cornerPoint);
-            Vector3 cornerLocalPosition = GetCloneLocalPosition(oppositeCornerPoint, cornerDirection, distanceToCorner);
+            var distanceToCorner = Vector2.Distance(oppositeCornerPoint, cornerPoint);
+            Vector3 cornerLocalPosition = GetCloneLocalPosition(cornerDirection, distanceToCorner);
             clone.Activate(cornerLocalPosition);
         }
 
@@ -135,19 +135,12 @@ namespace NewTankio.Code.Gameplay.Player
             Vector2 oppositeCornerPoint = _mapBoundariesService.GetIntersectionPoint(firstOppositeBoundary, secondOppositeBoundary);
             return oppositeCornerPoint;
         }
+        
+        private Vector3 GetCloneLocalPosition(Vector2 direction, float distance) 
+            => (Vector3)(direction * distance) + new Vector3(0, 0, transform.position.z);
 
-        private Vector3 GetCloneLocalPosition(Vector2 point, Vector2 direction, float distance)
-        {
-            Vector2 cloneWorldPosition = point + direction * distance;
-            Vector3 cloneLocalPosition = transform.InverseTransformPoint(cloneWorldPosition);
-            return cloneLocalPosition;
-        }
-
-        private static Vector2 GetDirection(Vector2 firstPoint, Vector2 secondPoint)
-        {
-            Vector2 direction = (firstPoint - secondPoint).normalized;
-            return direction;
-        }
+        private static Vector2 GetDirection(Vector2 firstPoint, Vector2 secondPoint) 
+            => (firstPoint - secondPoint).normalized;
     }
 
 }

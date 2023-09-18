@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace NewTankio.Code.Services
+namespace NewTankio.Code.Services.MapBoundaries
 {
     public readonly struct Boundary
     {
@@ -17,11 +17,11 @@ namespace NewTankio.Code.Services
             _boundaryPosition = boundaryPosition;
         }
 
-        public bool Intersects(in Bounds bounds)
+        public bool Intersects(in Rect rect)
         {
-            Vector2 boundsCenterToBoundary = _boundaryPosition - (Vector2)bounds.center;
+            Vector2 boundsCenterToBoundary = _boundaryPosition - rect.center;
             var projection = Vector2.Dot(boundsCenterToBoundary, _normal);
-            var boundsExtentProjection = Vector2.Dot(bounds.extents, _absNormal);
+            var boundsExtentProjection = Vector2.Dot(rect.size * 0.5f, _absNormal);
             return projection < boundsExtentProjection;
         }
 

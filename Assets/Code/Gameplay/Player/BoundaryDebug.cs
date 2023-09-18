@@ -1,4 +1,5 @@
 ﻿using NewTankio.Code.Services;
+using NewTankio.Code.Services.MapBoundaries;
 using UnityEngine;
 using VContainer;
 namespace NewTankio.Code.Gameplay.Player

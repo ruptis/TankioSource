@@ -14572,7 +14572,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 10, y: 10}
+  m_Size: {x: 11, y: 11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
@@ -18026,6 +18026,7 @@ GameObject:
   - component: {fileID: 1540513546}
   - component: {fileID: 1540513545}
   - component: {fileID: 1540513544}
+  - component: {fileID: 1540513549}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: Untagged
@@ -18187,6 +18188,19 @@ Transform:
   - {fileID: 665183771}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1540513549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540513543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0108efa8dd2e47c9a190ffbfbf87efe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 1895975878}
 --- !u!1001 &1558710632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21435,7 +21449,6 @@ GameObject:
   - component: {fileID: 1895975897}
   - component: {fileID: 1895975884}
   - component: {fileID: 1895975889}
-  - component: {fileID: 1895975898}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -21508,7 +21521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292fc53328cc4abfb9a6d87881e514ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  Speed: 5
 --- !u!114 &1895975887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21601,19 +21614,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectArea: {fileID: 697958684}
---- !u!114 &1895975898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895975877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0108efa8dd2e47c9a190ffbfbf87efe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 1540513547}
 --- !u!4 &1899085232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3933368206059544357, guid: 5086e2f6ff108b946af8f7832ab5c2c4, type: 3}

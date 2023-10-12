@@ -6,7 +6,7 @@ namespace NewTankio.Code.Services.InputService
     {
         private readonly Controls _controls = new();
         public Vector2 Movement { get; private set; }
-        public Vector2 MousePosition { get; }
+        public Vector2 MousePosition { get; private set; }
 
         public void Enable()
         {

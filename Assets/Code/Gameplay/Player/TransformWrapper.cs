@@ -13,7 +13,14 @@ namespace NewTankio.Code.Gameplay.Player
 
         private void Update()
         {
-            transform.position = _coordinateWrapper.WrapPoint(transform.position);
+            //transform.position = _coordinateWrapper.WrapPoint(transform.position);
+            Vector3 newPosition = _coordinateWrapper.WrapPoint(transform.position);
+
+            if (transform.position == newPosition)
+                return;
+            
+            Debug.Log("Wrap");
+            transform.position = newPosition;
         }
     }
 }

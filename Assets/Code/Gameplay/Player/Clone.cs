@@ -1,25 +1,41 @@
 ﻿using UnityEngine;
 namespace NewTankio.Code.Gameplay.Player
 {
-    public readonly struct Clone
+    public sealed class Clone : MonoBehaviour
     {
-        private readonly Transform _transform;
+        private Transform _parentTransform;
+        private Quaternion _previousParentRotation;
 
-        public Clone(Transform transform)
+        private void Start()
         {
-            _transform = transform;
+            Transform parent = transform.parent;
+            _parentTransform = parent;
+            _previousParentRotation = parent.rotation;
         }
 
-        public void Activate(in Vector3 localPosition)
+        private void LateUpdate()
         {
-            _transform.transform.localPosition = localPosition;
-            _transform.gameObject.SetActive(true);
-        }
+            Quaternion parentRotation = _parentTransform.rotation;
+            Quaternion rotationDifference = parentRotation * Quaternion.Inverse(_previousParentRotation);
 
+            Transform currentTransform = transform;
+            currentTransform.localPosition = Quaternion.Inverse(rotationDifference) * transform.localPosition;
+            
+            _previousParentRotation = parentRotation;
+        }
+        
+        public void Activate(in Vector3 worldPosition)
+        {
+            transform.localPosition = GetLocalPosition(worldPosition);
+        }
+        
         public void Deactivate()
         {
-            _transform.transform.localPosition = Vector3.zero;
-            //_transform.gameObject.SetActive(false);
+            transform.localPosition = Vector3.zero;
         }
+
+        private Vector3 GetLocalPosition(in Vector3 worldPosition)
+            => Quaternion.Inverse(_parentTransform.rotation) * worldPosition;
     }
+
 }

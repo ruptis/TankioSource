@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NewTankio.Code.Tools;
+using UnityEngine;
 using UnityEngine.InputSystem;
 namespace NewTankio.Code.Services.InputService
 {
@@ -13,6 +14,8 @@ namespace NewTankio.Code.Services.InputService
             _controls.Player.Movement.performed += OnMovement;
             _controls.Player.Movement.canceled += OnMovement;
 
+            _controls.Player.Mouse.performed += OnMouse;
+
             _controls.Enable();
         }
 
@@ -21,12 +24,19 @@ namespace NewTankio.Code.Services.InputService
             _controls.Player.Movement.performed -= OnMovement;
             _controls.Player.Movement.canceled -= OnMovement;
 
+            _controls.Player.Mouse.performed -= OnMouse;
+            
             _controls.Disable();
         }
 
         private void OnMovement(InputAction.CallbackContext obj)
         {
             Movement = obj.ReadValue<Vector2>();
+        }
+        
+        private void OnMouse(InputAction.CallbackContext obj)
+        {
+            MousePosition = obj.ReadValue<Vector2>();
         }
     }
 }

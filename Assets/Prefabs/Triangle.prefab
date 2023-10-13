@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1010136323674870288}
   - component: {fileID: 1820369754484418170}
+  - component: {fileID: 5402634438257438130}
   m_Layer: 8
   m_Name: TriangleClone 1
   m_TagString: Untagged
@@ -84,6 +85,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5402634438257438130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4231895555615273538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4832571056555594140
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,8 +179,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6417218943959875504}
   - {fileID: 1344053679110435341}
+  - {fileID: 6417218943959875504}
   - {fileID: 3814143589012624836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -360,10 +373,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boundaryObserver: {fileID: 3094667169704952660}
-  _cloneTransforms:
-  - {fileID: 1010136323674870288}
-  - {fileID: 7402452198545281883}
-  - {fileID: 2437091232806682705}
+  _clones:
+  - {fileID: 5402634438257438130}
+  - {fileID: 6088377686093912132}
+  - {fileID: 1798137592056951072}
 --- !u!114 &3094667169704952660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2437091232806682705}
   - component: {fileID: 219761621552026573}
+  - component: {fileID: 1798137592056951072}
   m_Layer: 8
   m_Name: TriangleClone 3
   m_TagString: Untagged
@@ -461,6 +475,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1798137592056951072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6041018188321951779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6509046437256241371
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7402452198545281883}
   - component: {fileID: 8343436795530467276}
+  - component: {fileID: 6088377686093912132}
   m_Layer: 8
   m_Name: TriangleClone 2
   m_TagString: Untagged
@@ -629,3 +656,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6088377686093912132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345221035020426217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

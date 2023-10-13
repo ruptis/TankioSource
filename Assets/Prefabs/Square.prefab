@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8152708563305213615}
   - component: {fileID: 2829448505175260089}
   - component: {fileID: 7208615519637201648}
+  - component: {fileID: 9039231879556643473}
   m_Layer: 0
   m_Name: SquareClone 2
   m_TagString: Untagged
@@ -130,6 +131,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &9039231879556643473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004154664497431239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1832381242040597911
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,8 +178,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6534961879731352602}
   - {fileID: 6918875165146384899}
+  - {fileID: 6534961879731352602}
   - {fileID: 6413979464490349184}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -449,6 +462,7 @@ GameObject:
   - component: {fileID: 3847397136227861710}
   - component: {fileID: 18650462056234402}
   - component: {fileID: 8967392182884996730}
+  - component: {fileID: 8452066940219769353}
   m_Layer: 0
   m_Name: SquareClone 3
   m_TagString: Untagged
@@ -568,6 +582,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8452066940219769353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861987254611739311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7026791483764107481
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,6 +605,7 @@ GameObject:
   - component: {fileID: 1751321675014881937}
   - component: {fileID: 1629288272073489959}
   - component: {fileID: 3815817686153190889}
+  - component: {fileID: 8243730093125198902}
   m_Layer: 0
   m_Name: SquareClone 1
   m_TagString: Untagged
@@ -698,6 +725,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8243730093125198902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026791483764107481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7398589331810485085
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,10 +786,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boundaryObserver: {fileID: 7101795092315249879}
-  _cloneTransforms:
-  - {fileID: 1751321675014881937}
-  - {fileID: 8152708563305213615}
-  - {fileID: 3847397136227861710}
+  _clones:
+  - {fileID: 8243730093125198902}
+  - {fileID: 9039231879556643473}
+  - {fileID: 8452066940219769353}
 --- !u!114 &7101795092315249879
 MonoBehaviour:
   m_ObjectHideFlags: 0

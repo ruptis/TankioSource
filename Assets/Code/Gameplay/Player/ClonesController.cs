@@ -29,7 +29,10 @@ namespace NewTankio.Code.Gameplay.Player
         private void Start()
         {
             foreach (Clone clone in _clones)
+            {
                 _clonesQueue.Enqueue(clone);
+                clone.Deactivate();
+            }
         }
 
         private void OnEnable()

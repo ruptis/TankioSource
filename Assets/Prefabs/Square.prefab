@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8152708563305213615}
   - component: {fileID: 2829448505175260089}
   - component: {fileID: 7208615519637201648}
+  - component: {fileID: 9050949684184834557}
   - component: {fileID: 9039231879556643473}
   m_Layer: 0
   m_Name: SquareClone 2
@@ -131,6 +132,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &9050949684184834557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004154664497431239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87feebb280460b94f9f59457c7b5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9039231879556643473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,8 +169,9 @@ GameObject:
   - component: {fileID: 1236549836509963423}
   - component: {fileID: 886744947407579343}
   - component: {fileID: 1105093715646110292}
-  - component: {fileID: 7473632908178646009}
+  - component: {fileID: 8293688744792693801}
   - component: {fileID: 5427005078426231705}
+  - component: {fileID: 7157387058942262561}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -202,7 +216,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832381242040597911}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 216a442f9aa14da5a344056884c8c36a, type: 3}
   m_Name: 
@@ -220,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292fc53328cc4abfb9a6d87881e514ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Halflife: 0.5
   Speed: 0.4
 --- !u!114 &1105093715646110292
 MonoBehaviour:
@@ -234,9 +249,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Movement: {fileID: 886744947407579343}
-  TriggerObserver: {fileID: 7473632908178646009}
+  TriggerEmitter: {fileID: 8293688744792693801}
   BounceFactor: 0.4
---- !u!114 &7473632908178646009
+--- !u!114 &8293688744792693801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,9 +260,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1832381242040597911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af87feebb280460b94f9f59457c7b5f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 82a82fb7dc4a4a6d85d596295d1a1e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _triggerEmitters:
+  - {fileID: 7770442219428152832}
+  - {fileID: 3354072247099190325}
+  - {fileID: 9050949684184834557}
+  - {fileID: 7741688014796910372}
 --- !u!50 &5427005078426231705
 Rigidbody2D:
   serializedVersion: 4
@@ -275,6 +295,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7157387058942262561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832381242040597911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2b90b01d8c469b80da48cff673e3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerEmitter: {fileID: 8293688744792693801}
 --- !u!1 &2284942515656373280
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +319,7 @@ GameObject:
   - component: {fileID: 6534961879731352602}
   - component: {fileID: 352460111778924434}
   - component: {fileID: 7333122849574105257}
+  - component: {fileID: 7770442219428152832}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -405,6 +439,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7770442219428152832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2284942515656373280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87feebb280460b94f9f59457c7b5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4242004083747084474
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +508,7 @@ GameObject:
   - component: {fileID: 3847397136227861710}
   - component: {fileID: 18650462056234402}
   - component: {fileID: 8967392182884996730}
+  - component: {fileID: 7741688014796910372}
   - component: {fileID: 8452066940219769353}
   m_Layer: 0
   m_Name: SquareClone 3
@@ -582,6 +629,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7741688014796910372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861987254611739311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87feebb280460b94f9f59457c7b5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8452066940219769353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,6 +664,7 @@ GameObject:
   - component: {fileID: 1751321675014881937}
   - component: {fileID: 1629288272073489959}
   - component: {fileID: 3815817686153190889}
+  - component: {fileID: 3354072247099190325}
   - component: {fileID: 8243730093125198902}
   m_Layer: 0
   m_Name: SquareClone 1
@@ -725,6 +785,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3354072247099190325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026791483764107481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87feebb280460b94f9f59457c7b5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8243730093125198902
 MonoBehaviour:
   m_ObjectHideFlags: 0

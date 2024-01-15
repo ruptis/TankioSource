@@ -3,21 +3,21 @@ namespace NewTankio.Code.Gameplay.Player
 {
     public class DebugTriggerListener : MonoBehaviour
     {
-        public TriggerEmitter TriggerEmitter;
+        public TriggerObserver TriggerObserver;
 
         private void OnEnable()
         {
-            TriggerEmitter.TriggerStayed += OnStay;
+            TriggerObserver.TriggerStayed += OnStay;
         }
-        
+
         private void OnDisable()
         {
-            TriggerEmitter.TriggerStayed -= OnStay;
+            TriggerObserver.TriggerStayed -= OnStay;
         }
-        
+
         private void OnStay(Collider2D arg1, Collider2D arg2)
         {
-            Debug.Log(arg1.gameObject.name + ", Frame: " + Time.frameCount);
+            Debug.Log($"Stayed: {arg1.name} {arg2.name} in frame {Time.frameCount}");
         }
     }
 }

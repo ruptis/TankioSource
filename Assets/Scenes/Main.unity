@@ -3239,9 +3239,10 @@ GameObject:
   m_Component:
   - component: {fileID: 331455500}
   - component: {fileID: 331455501}
+  - component: {fileID: 331455506}
   - component: {fileID: 331455504}
-  - component: {fileID: 331455503}
   - component: {fileID: 331455502}
+  - component: {fileID: 331455505}
   m_Layer: 0
   m_Name: CircleClone 2
   m_TagString: Untagged
@@ -3329,18 +3330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &331455503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331455499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af87feebb280460b94f9f59457c7b5f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &331455504
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3376,6 +3365,52 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!255 &331455505
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331455499}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 1055663293}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!50 &331455506
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331455499}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &337575698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10545,9 +10580,10 @@ GameObject:
   m_Component:
   - component: {fileID: 908498803}
   - component: {fileID: 908498802}
+  - component: {fileID: 908498808}
   - component: {fileID: 908498806}
-  - component: {fileID: 908498805}
   - component: {fileID: 908498804}
+  - component: {fileID: 908498807}
   m_Layer: 0
   m_Name: CircleClone 3
   m_TagString: Untagged
@@ -10635,18 +10671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &908498805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908498801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af87feebb280460b94f9f59457c7b5f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &908498806
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10682,6 +10706,52 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!255 &908498807
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908498801}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 1055663293}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!50 &908498808
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908498801}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &910816384
 GameObject:
   m_ObjectHideFlags: 0
@@ -12776,6 +12846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1055663290}
   - component: {fileID: 1055663289}
+  - component: {fileID: 1055663293}
   - component: {fileID: 1055663292}
   - component: {fileID: 1055663291}
   m_Layer: 0
@@ -12900,6 +12971,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &1055663293
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055663288}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1072856352
 GameObject:
   m_ObjectHideFlags: 0
@@ -20079,9 +20177,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1722674962}
   - component: {fileID: 1722674963}
+  - component: {fileID: 1722674968}
   - component: {fileID: 1722674966}
-  - component: {fileID: 1722674965}
   - component: {fileID: 1722674964}
+  - component: {fileID: 1722674967}
   m_Layer: 0
   m_Name: CircleClone 1
   m_TagString: Untagged
@@ -20169,18 +20268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1722674965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722674961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af87feebb280460b94f9f59457c7b5f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &1722674966
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -20216,6 +20303,52 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!255 &1722674967
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722674961}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 1055663293}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!50 &1722674968
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722674961}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &1723485321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3933368206059544357, guid: 5086e2f6ff108b946af8f7832ab5c2c4, type: 3}
@@ -21711,8 +21844,6 @@ GameObject:
   - component: {fileID: 1895975899}
   - component: {fileID: 1895975900}
   - component: {fileID: 1895975890}
-  - component: {fileID: 1895975901}
-  - component: {fileID: 1895975889}
   - component: {fileID: 1895975902}
   m_Layer: 0
   m_Name: PlayerAvatar
@@ -21767,33 +21898,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movement: {fileID: 1895975886}
   Rotation: {fileID: 1895975899}
---- !u!50 &1895975889
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895975877}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &1895975890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21807,7 +21911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Movement: {fileID: 1895975886}
-  TriggerEmitter: {fileID: 1895975901}
+  TriggerObserver: {fileID: 1055663291}
   BounceFactor: 1
 --- !u!114 &1895975896
 MonoBehaviour:
@@ -21847,23 +21951,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HalfLife: 0.3
---- !u!114 &1895975901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895975877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82a82fb7dc4a4a6d85d596295d1a1e41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerEmitters:
-  - {fileID: 1055663291}
-  - {fileID: 1722674965}
-  - {fileID: 331455503}
-  - {fileID: 908498805}
 --- !u!114 &1895975902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21876,7 +21963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2b90b01d8c469b80da48cff673e3dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerEmitter: {fileID: 1895975901}
+  TriggerObserver: {fileID: 1055663291}
 --- !u!4 &1899085232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3933368206059544357, guid: 5086e2f6ff108b946af8f7832ab5c2c4, type: 3}

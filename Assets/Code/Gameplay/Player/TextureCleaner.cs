@@ -7,7 +7,7 @@ namespace NewTankio.Code.Gameplay.Player
         public RenderTexture RenderTexture;
         private CommandBuffer _commandBuffer;
 
-        private void Start() 
+        private void Awake() 
             => _commandBuffer = new CommandBuffer();
 
         private void OnDisable()

@@ -4,14 +4,14 @@ namespace NewTankio.Code.Gameplay.Player
     public sealed class Knockback : MonoBehaviour
     {
         public Movement Movement;
-        public TriggerEmitter TriggerEmitter;
+        public TriggerObserver TriggerObserver;
         public float BounceFactor = 1f;
 
         private void OnEnable() 
-            => TriggerEmitter.TriggerStayed += OnTriggerStayed;
+            => TriggerObserver.TriggerStayed += OnTriggerStayed;
 
         private void OnDisable() 
-            => TriggerEmitter.TriggerStayed -= OnTriggerStayed;
+            => TriggerObserver.TriggerStayed -= OnTriggerStayed;
 
         private void OnTriggerStayed(Collider2D thisCollider, Collider2D otherCollider)
         {

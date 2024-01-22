@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5402634438257438130}
   - component: {fileID: 499133602683678450}
   - component: {fileID: 2240372356213323288}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TriangleClone 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3814143589012624836}
+  m_Father: {fileID: 1243410359745952884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1820369754484418170
 SpriteRenderer:
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1344053679110435341}
   - component: {fileID: 8559475283090913666}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Rect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,9 @@ GameObject:
   - component: {fileID: -7198786256513674259}
   - component: {fileID: 4454182458613966218}
   - component: {fileID: 7628141772840551046}
-  m_Layer: 8
+  - component: {fileID: 2006274623756483879}
+  - component: {fileID: 4307319277001860960}
+  m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +277,9 @@ Transform:
   m_Children:
   - {fileID: 1344053679110435341}
   - {fileID: 6417218943959875504}
-  - {fileID: 3814143589012624836}
+  - {fileID: 1010136323674870288}
+  - {fileID: 7402452198545281883}
+  - {fileID: 2437091232806682705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-5467543785484047484
@@ -332,66 +336,30 @@ MonoBehaviour:
   Movement: {fileID: 4454182458613966218}
   TriggerObserver: {fileID: 7696835582264045361}
   BounceFactor: 0.4
---- !u!1 &5930098096535823644
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3814143589012624836}
-  - component: {fileID: 3239839220743997880}
-  - component: {fileID: 3094667169704952660}
-  m_Layer: 0
-  m_Name: Clones
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3814143589012624836
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5930098096535823644}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1010136323674870288}
-  - {fileID: 7402452198545281883}
-  - {fileID: 2437091232806682705}
-  m_Father: {fileID: 1243410359745952884}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3239839220743997880
+--- !u!114 &2006274623756483879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5930098096535823644}
+  m_GameObject: {fileID: 5778255122610935583}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d973b2ff00f94923a9483a63afb9e366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boundaryObserver: {fileID: 3094667169704952660}
+  _boundaryObserver: {fileID: 4307319277001860960}
   _clones:
   - {fileID: 5402634438257438130}
   - {fileID: 6088377686093912132}
   - {fileID: 1798137592056951072}
---- !u!114 &3094667169704952660
+--- !u!114 &4307319277001860960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5930098096535823644}
+  m_GameObject: {fileID: 5778255122610935583}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da0f2355fc89a0141a8fb7b69c5e9a8b, type: 3}
@@ -412,7 +380,7 @@ GameObject:
   - component: {fileID: 1798137592056951072}
   - component: {fileID: 7189626884169704879}
   - component: {fileID: 8052492063413328961}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TriangleClone 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3814143589012624836}
+  m_Father: {fileID: 1243410359745952884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &219761621552026573
 SpriteRenderer:
@@ -605,7 +573,7 @@ GameObject:
   - component: {fileID: 1285623394466773992}
   - component: {fileID: 7696835582264045361}
   - component: {fileID: 6207728133798648051}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +748,7 @@ GameObject:
   - component: {fileID: 6088377686093912132}
   - component: {fileID: 6055188639756853745}
   - component: {fileID: 6103820056315551608}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TriangleClone 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,7 +768,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3814143589012624836}
+  m_Father: {fileID: 1243410359745952884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8343436795530467276
 SpriteRenderer:

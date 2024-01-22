@@ -55,8 +55,6 @@ namespace NewTankio.Code.Gameplay.Player
 
             if (!IsSecondBoundaryEntered())
                 DeactivateCornerClone();
-            
-            Debug.Log(gameObject.transform.parent.name + " Entered");
         }
 
         private void OnBoundaryExited(Boundary boundary)
@@ -68,8 +66,6 @@ namespace NewTankio.Code.Gameplay.Player
 
             if (!IsSecondBoundaryExited())
                 ProcessCornerClone(_intersectedBoundaries.First(), _intersectedBoundaries.Last(), GetCornerClone());
-            
-            Debug.Log(gameObject.transform.parent.name + " Exited");
         }
 
         private void DeactivateCornerClone()

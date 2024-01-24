@@ -26,25 +26,19 @@ namespace NewTankio.Code.Services.MapBoundaries
             return projection < boundsExtentProjection;
         }
 
-        public bool IsOutside(in Vector2 point)
-        {
-            Vector2 pointToBoundary = point - _boundaryPosition;
-            var distanceToBoundary = Vector2.Dot(pointToBoundary, _normal);
-            return distanceToBoundary > 0f;
-        }
+        public bool IsOutside(in Vector2 point) => 
+            GetDistanceToBoundary(point) > 0f;
 
-        public bool IsInside(in Vector2 point)
-        {
-            Vector2 pointToBoundary = point - _boundaryPosition;
-            var distanceToBoundary = Vector2.Dot(pointToBoundary, _normal);
-            return distanceToBoundary < 0f;
-        }
+        public bool IsInside(in Vector2 point) => 
+            GetDistanceToBoundary(point) <= 0f;
 
-        public Vector2 ClosestPoint(in Vector2 point)
+        public Vector2 ClosestPoint(in Vector2 point) => 
+            point - _normal * GetDistanceToBoundary(point);
+
+        private float GetDistanceToBoundary(Vector2 point)
         {
             Vector2 pointToBoundary = point - _boundaryPosition;
-            var distanceToBoundary = Vector2.Dot(pointToBoundary, _normal);
-            return point - _normal * distanceToBoundary;
+            return Vector2.Dot(pointToBoundary, _normal);
         }
 
         public bool TryGetIntersectionPoint(in Boundary otherBoundary, out Vector2 intersectionPoint)

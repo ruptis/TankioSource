@@ -12,5 +12,8 @@ namespace NewTankio.Code.Services.MapBoundaries
         Boundary GetOppositeBoundary(in Boundary boundary);
         Vector2 GetIntersectionPoint(in Boundary boundary, in Boundary nextBoundary);
         public int OverlapBoundaries(in Rect rect, IList<Boundary> boundaries);
+        public bool IsInside(in Vector2 point);
+        public bool IsOutside(in Vector2 point);
+        public bool TryGetCrossedBoundary(in Vector2 point, out Boundary boundary);
     }
 }

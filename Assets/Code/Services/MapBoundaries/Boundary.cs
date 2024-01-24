@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 namespace NewTankio.Code.Services.MapBoundaries
 {
     public readonly struct Boundary
@@ -25,13 +26,27 @@ namespace NewTankio.Code.Services.MapBoundaries
             return projection < boundsExtentProjection;
         }
 
+        public bool IsOutside(in Vector2 point)
+        {
+            Vector2 pointToBoundary = point - _boundaryPosition;
+            var distanceToBoundary = Vector2.Dot(pointToBoundary, _normal);
+            return distanceToBoundary > 0f;
+        }
+
+        public bool IsInside(in Vector2 point)
+        {
+            Vector2 pointToBoundary = point - _boundaryPosition;
+            var distanceToBoundary = Vector2.Dot(pointToBoundary, _normal);
+            return distanceToBoundary < 0f;
+        }
+
         public Vector2 ClosestPoint(in Vector2 point)
         {
             Vector2 pointToBoundary = point - _boundaryPosition;
             var distanceToBoundary = Vector2.Dot(pointToBoundary, _normal);
             return point - _normal * distanceToBoundary;
         }
-        
+
         public bool TryGetIntersectionPoint(in Boundary otherBoundary, out Vector2 intersectionPoint)
         {
             Vector2 p1 = _boundaryPosition;
@@ -47,10 +62,27 @@ namespace NewTankio.Code.Services.MapBoundaries
                 return false;
             }
 
-            var t = ((p2.x -p1.x) * d2.y - (p2.y - p1.y) * d2.x) / denominator;
+            var t = ((p2.x - p1.x) * d2.y - (p2.y - p1.y) * d2.x) / denominator;
 
             intersectionPoint = p1 + t * d1;
             return true;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Boundary other && Equals(other);
+        }
+
+        private bool Equals(Boundary other) =>
+            _normal.Equals(other._normal) && _absNormal.Equals(other._absNormal) && _boundaryPosition.Equals(other._boundaryPosition);
+
+        public override int GetHashCode() =>
+            HashCode.Combine(_normal, _absNormal, _boundaryPosition);
+
+        public static bool operator==(Boundary left, Boundary right) =>
+            left.Equals(right);
+
+        public static bool operator!=(Boundary left, Boundary right) =>
+            !left.Equals(right);
     }
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 namespace NewTankio.Code.Services.MapBoundaries
 {
-    public class MapBoundariesService : IMapBoundaries
+    public sealed class MapBoundariesService : IMapBoundaries
     {
         private readonly Boundary[] _boundaries;
         private readonly Dictionary<Boundary, Boundary> _oppositeBoundaries;
@@ -41,6 +41,48 @@ namespace NewTankio.Code.Services.MapBoundaries
                     boundaries[count++] = boundary;
 
             return count;
+        }
+        
+        public bool IsInside(in Vector2 point)
+        {
+            return !IsOutside(point);
+        }
+        
+        public bool IsOutside(in Vector2 point)
+        {
+            foreach (Boundary boundary in _boundaries)
+                if (boundary.IsOutside(point))
+                    return true;
+
+            return false;
+        }
+        
+        public bool TryGetCrossedBoundary(in Vector2 point, out Boundary boundary)
+        {
+            boundary = default;
+            var distance = float.MaxValue;
+
+            foreach (Boundary b in _boundaries)
+            {
+                if (!b.IsOutside(point))
+                    continue;
+
+                var distanceToBoundary = GetDistance(point, b);
+                if (distanceToBoundary > distance)
+                    continue;
+                
+                distance = distanceToBoundary;
+                boundary = b;
+            }
+
+            return boundary != default;
+
+            float GetDistance(Vector2 vector2, Boundary b)
+            {
+                Vector2 pointToBoundary = b.Position - vector2;
+                var distanceToBoundary = pointToBoundary.sqrMagnitude;
+                return distanceToBoundary;
+            }
         }
 
         private static Boundary[] InitializeBoundaries(Bounds bounds)

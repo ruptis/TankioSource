@@ -204,7 +204,6 @@ GameObject:
   - component: {fileID: 1236549836509963423}
   - component: {fileID: 886744947407579343}
   - component: {fileID: 1105093715646110292}
-  - component: {fileID: 7157387058942262561}
   - component: {fileID: 2697619061965612233}
   - component: {fileID: 1242727006046383023}
   m_Layer: 0
@@ -288,19 +287,6 @@ MonoBehaviour:
   Movement: {fileID: 886744947407579343}
   TriggerObserver: {fileID: 7770442219428152832}
   BounceFactor: 0.4
---- !u!114 &7157387058942262561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832381242040597911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d2b90b01d8c469b80da48cff673e3dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TriggerObserver: {fileID: 7770442219428152832}
 --- !u!114 &2697619061965612233
 MonoBehaviour:
   m_ObjectHideFlags: 0

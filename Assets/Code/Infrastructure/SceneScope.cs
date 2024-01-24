@@ -17,7 +17,7 @@ namespace NewTankio.Code.Infrastructure
             builder.RegisterInstance(_camera);
             builder.RegisterInstance<IMapBoundaries>(new MapBoundariesService(_background.bounds));
             builder.Register<ICameraCaster, CameraCaster>(Lifetime.Singleton);
-            builder.Register<ICoordinateWrapper, RectangleWrapper>(Lifetime.Singleton);
+            builder.Register<ICoordinateWrapper, CoordinateWrapper>(Lifetime.Singleton);
         }
     }
 }

@@ -2,26 +2,21 @@
 using UnityEngine;
 namespace NewTankio.Code.Services.MapBoundaries
 {
-    public sealed class MapBoundariesService : IMapBoundaries
+    public sealed class BoundsMapBoundariesService : IMapBoundaries
     {
         private readonly Boundary[] _boundaries;
-        private readonly Dictionary<Boundary, Boundary> _oppositeBoundaries;
         private readonly Dictionary<(Boundary, Boundary), Vector2> _intersectionPoints;
+        private readonly Dictionary<Boundary, Boundary> _oppositeBoundaries;
 
-        public MapBoundariesService(Bounds bounds)
+        public BoundsMapBoundariesService(Bounds bounds)
         {
-            MinPoint = bounds.min;
-            MaxPoint = bounds.max;
             _boundaries = InitializeBoundaries(bounds);
             _oppositeBoundaries = InitializeOppositeBoundaries(_boundaries);
             _intersectionPoints = InitializeIntersectionPoints(_boundaries);
         }
-        
+
         public IEnumerable<Boundary> Boundaries => _boundaries;
         public int BoundariesCount => _boundaries.Length;
-        public Vector2 MinPoint { get; }
-        public Vector2 MaxPoint { get; }
-        
 
         public Boundary GetOppositeBoundary(in Boundary boundary)
         {
@@ -32,31 +27,40 @@ namespace NewTankio.Code.Services.MapBoundaries
         {
             return _intersectionPoints[(boundary, nextBoundary)];
         }
-        
+
+        public bool TryGetIntersectionPoint(in Boundary boundary, in Boundary nextBoundary, out Vector2 intersectionPoint)
+        {
+            return _intersectionPoints.TryGetValue((boundary, nextBoundary), out intersectionPoint);
+        }
+
         public int OverlapBoundaries(in Rect rect, IList<Boundary> boundaries)
         {
             var count = 0;
             foreach (Boundary boundary in _boundaries)
+            {
                 if (boundary.Intersects(rect))
                     boundaries[count++] = boundary;
+            }
 
             return count;
         }
-        
+
         public bool IsInside(in Vector2 point)
         {
             return !IsOutside(point);
         }
-        
+
         public bool IsOutside(in Vector2 point)
         {
             foreach (Boundary boundary in _boundaries)
+            {
                 if (boundary.IsOutside(point))
                     return true;
+            }
 
             return false;
         }
-        
+
         public bool TryGetCrossedBoundary(in Vector2 point, out Boundary boundary)
         {
             boundary = default;
@@ -70,7 +74,7 @@ namespace NewTankio.Code.Services.MapBoundaries
                 var distanceToBoundary = GetDistance(point, b);
                 if (distanceToBoundary > distance)
                     continue;
-                
+
                 distance = distanceToBoundary;
                 boundary = b;
             }
@@ -120,7 +124,7 @@ namespace NewTankio.Code.Services.MapBoundaries
             {
                 Boundary boundary = boundaries[i];
                 Boundary nextBoundary = boundaries[(i + 1) % boundaries.Count];
-                
+
                 if (!boundary.TryGetIntersectionPoint(nextBoundary, out Vector2 cornerPoint))
                     continue;
                 intersectionPoints.Add((boundary, nextBoundary), cornerPoint);

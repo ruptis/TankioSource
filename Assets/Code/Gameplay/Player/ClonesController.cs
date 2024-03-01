@@ -104,7 +104,7 @@ namespace NewTankio.Code.Gameplay.Player
             return _intersectedBoundaries.Count != 2;
         }
 
-        private void ProcessBoundaryClone(Boundary boundary, Vector2 position, in Clone clone)
+        private void ProcessBoundaryClone(Boundary boundary, Vector2 position, Clone clone)
         {
             Vector2 closestPoint = boundary.ClosestPoint(position);
             Vector2 oppositeClosestPoint = GetOppositeClosestPoint(boundary, position);
@@ -114,9 +114,10 @@ namespace NewTankio.Code.Gameplay.Player
             clone.Activate(clonePosition);
         }
 
-        private void ProcessCornerClone(Boundary firstBoundary, Boundary secondBoundary, in Clone clone)
+        private void ProcessCornerClone(Boundary firstBoundary, Boundary secondBoundary, Clone clone)
         {
-            Vector2 cornerPoint = _mapBoundariesService.GetIntersectionPoint(firstBoundary, secondBoundary);
+            if (!_mapBoundariesService.TryGetIntersectionPoint(firstBoundary, secondBoundary, out Vector2 cornerPoint))
+                return;
             Vector2 oppositeCornerPoint = GetOppositeCornerPoint(firstBoundary, secondBoundary);
             Vector2 cornerDirection = GetDirection(oppositeCornerPoint, cornerPoint);
             var distanceToCorner = Vector2.Distance(oppositeCornerPoint, cornerPoint);
@@ -127,22 +128,20 @@ namespace NewTankio.Code.Gameplay.Player
         private Vector2 GetOppositeClosestPoint(Boundary boundary, Vector2 position)
         {
             Boundary oppositeBoundary = _mapBoundariesService.GetOppositeBoundary(boundary);
-            Vector2 oppositeClosestPoint = oppositeBoundary.ClosestPoint(position);
-            return oppositeClosestPoint;
+            return oppositeBoundary.ClosestPoint(position);
         }
 
         private Vector2 GetOppositeCornerPoint(Boundary firstBoundary, Boundary secondBoundary)
         {
             Boundary firstOppositeBoundary = _mapBoundariesService.GetOppositeBoundary(firstBoundary);
             Boundary secondOppositeBoundary = _mapBoundariesService.GetOppositeBoundary(secondBoundary);
-            Vector2 oppositeCornerPoint = _mapBoundariesService.GetIntersectionPoint(firstOppositeBoundary, secondOppositeBoundary);
-            return oppositeCornerPoint;
+            return _mapBoundariesService.GetIntersectionPoint(firstOppositeBoundary, secondOppositeBoundary);
         }
-        
-        private static Vector3 GetClonePosition(Vector2 direction, float distance) 
+
+        private static Vector3 GetClonePosition(Vector2 direction, float distance)
             => direction * distance;
 
-        private static Vector2 GetDirection(Vector2 firstPoint, Vector2 secondPoint) 
+        private static Vector2 GetDirection(Vector2 firstPoint, Vector2 secondPoint)
             => (firstPoint - secondPoint).normalized;
     }
 

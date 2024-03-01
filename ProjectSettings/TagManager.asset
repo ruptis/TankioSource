@@ -38,11 +38,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Cameras
-    uniqueID: 1919336817
-    locked: 0
   - name: Background
     uniqueID: 4201196649
+    locked: 0
+  - name: Cameras
+    uniqueID: 1919336817
     locked: 0
   - name: Default
     uniqueID: 0

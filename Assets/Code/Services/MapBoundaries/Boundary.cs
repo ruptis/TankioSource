@@ -1,21 +1,32 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 namespace NewTankio.Code.Services.MapBoundaries
 {
-    public readonly struct Boundary
+    public sealed class Boundary
     {
-        private readonly Vector2 _normal;
-        private readonly Vector2 _absNormal;
-        private readonly Vector2 _boundaryPosition;
-
-        public Vector2 Normal => _normal;
-        public Vector2 Position => _boundaryPosition;
+        private Vector2 _absNormal;
+        private Vector2 _boundaryPosition;
+        private Vector2 _normal;
 
         public Boundary(Vector2 normal, Vector2 boundaryPosition)
         {
-            _normal = normal.normalized;
-            _absNormal = new Vector2(Mathf.Abs(_normal.x), Mathf.Abs(_normal.y));
-            _boundaryPosition = boundaryPosition;
+            Normal = normal;
+            Position = boundaryPosition;
+        }
+
+        public Vector2 Normal
+        {
+            get => _normal;
+            set
+            {
+                _normal = value.normalized;
+                _absNormal = new Vector2(Mathf.Abs(_normal.x), Mathf.Abs(_normal.y));
+            }
+        }
+
+        public Vector2 Position
+        {
+            get => _boundaryPosition; 
+            set => _boundaryPosition = value;
         }
 
         public bool Intersects(in Rect rect)
@@ -26,57 +37,58 @@ namespace NewTankio.Code.Services.MapBoundaries
             return projection < boundsExtentProjection;
         }
 
-        public bool IsOutside(in Vector2 point) => 
-            GetDistanceToBoundary(point) > 0f;
+        public bool IsOutside(in Vector2 point)
+        {
+            return GetDistanceToBoundary(point) > 0f;
+        }
 
-        public bool IsInside(in Vector2 point) => 
-            GetDistanceToBoundary(point) <= 0f;
+        public bool IsInside(in Vector2 point)
+        {
+            return GetDistanceToBoundary(point) <= 0f;
+        }
 
-        public Vector2 ClosestPoint(in Vector2 point) => 
-            point - _normal * GetDistanceToBoundary(point);
+        public Vector2 ClosestPoint(in Vector2 point)
+        {
+            return point - _normal * GetDistanceToBoundary(point);
+        }
 
-        private float GetDistanceToBoundary(Vector2 point)
+        private float GetDistanceToBoundary(in Vector2 point)
         {
             Vector2 pointToBoundary = point - _boundaryPosition;
             return Vector2.Dot(pointToBoundary, _normal);
         }
 
-        public bool TryGetIntersectionPoint(in Boundary otherBoundary, out Vector2 intersectionPoint)
+        public bool TryGetIntersectionPoint(Boundary otherBoundary, out Vector2 intersectionPoint)
         {
-            Vector2 p1 = _boundaryPosition;
-            Vector2 p2 = otherBoundary._boundaryPosition;
-
             var d1 = new Vector2(-_normal.y, _normal.x);
             var d2 = new Vector2(-otherBoundary._normal.y, otherBoundary._normal.x);
 
             var denominator = d1.x * d2.y - d1.y * d2.x;
-            if (Mathf.Abs(denominator) < Mathf.Epsilon)
+            if (IsParralel(denominator))
             {
                 intersectionPoint = Vector2.zero;
                 return false;
             }
 
-            var t = ((p2.x - p1.x) * d2.y - (p2.y - p1.y) * d2.x) / denominator;
+            var t = ((otherBoundary._boundaryPosition.x - _boundaryPosition.x) * d2.y - (otherBoundary._boundaryPosition.y - _boundaryPosition.y) * d2.x) / denominator;
 
-            intersectionPoint = p1 + t * d1;
+            intersectionPoint = _boundaryPosition + t * d1;
             return true;
         }
 
-        public override bool Equals(object obj)
+        public bool IsParallel(Boundary otherBoundary)
         {
-            return obj is Boundary other && Equals(other);
+            var d1 = new Vector2(-_normal.y, _normal.x);
+            var d2 = new Vector2(-otherBoundary._normal.y, otherBoundary._normal.x);
+
+            var denominator = d1.x * d2.y - d1.y * d2.x;
+            return IsParralel(denominator);
         }
+        
+        private static bool IsParralel(float denominator, float epsilon = 0.0001f) => 
+            Mathf.Abs(denominator) < epsilon;
 
-        private bool Equals(Boundary other) =>
-            _normal.Equals(other._normal) && _absNormal.Equals(other._absNormal) && _boundaryPosition.Equals(other._boundaryPosition);
-
-        public override int GetHashCode() =>
-            HashCode.Combine(_normal, _absNormal, _boundaryPosition);
-
-        public static bool operator==(Boundary left, Boundary right) =>
-            left.Equals(right);
-
-        public static bool operator!=(Boundary left, Boundary right) =>
-            !left.Equals(right);
+        public override string ToString() => 
+            $"Normal: {_normal}, Position: {_boundaryPosition}";
     }
 }

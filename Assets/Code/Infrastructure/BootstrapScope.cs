@@ -5,16 +5,24 @@ using VContainer;
 using VContainer.Unity;
 namespace NewTankio.Code.Infrastructure
 {
-    public sealed class GameScope : LifetimeScope
+    public sealed class BootstrapScope : LifetimeScope
     {
+        protected override void Awake()
+        {
+            IsRoot = true;
+            DontDestroyOnLoad(this);
+            base.Awake();
+        }
+
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
             builder.Register<IInputService, InputService>(Lifetime.Singleton);
             builder.Register<BootstrapGameState>(Lifetime.Singleton);
-            builder.Register<IStateFactory<IGameState>, GameStateFactory>(Lifetime.Singleton);
-            builder.Register<StateMachine<IGameState>, GameStateMachine>(Lifetime.Singleton);
-            builder.RegisterEntryPoint<GameRunner>();
+            builder.Register<MainGameState>(Lifetime.Singleton);
+            builder.Register<StateFactory>(Lifetime.Singleton);
+            builder.Register<GameStateMachine>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<GameStartup>();
         }
     }
 }

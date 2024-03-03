@@ -1,12 +1,12 @@
 ﻿using NewTankio.Code.Infrastructure.GameStates;
-using NewTankio.Code.Tools.StateMachine;
 using VContainer.Unity;
 namespace NewTankio.Code.Infrastructure
 {
-    public sealed class GameRunner : IStartable
+    public sealed class GameStartup : IStartable
     {
-        private readonly StateMachine<IGameState> _stateMachine;
-        public GameRunner(StateMachine<IGameState> stateMachine)
+        private readonly GameStateMachine _stateMachine;
+        
+        public GameStartup(GameStateMachine stateMachine)
         {
             _stateMachine = stateMachine;
         }

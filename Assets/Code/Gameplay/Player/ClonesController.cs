@@ -14,17 +14,17 @@ namespace NewTankio.Code.Gameplay.Player
         [SerializeField] private Clone[] _clones = new Clone[MaxClones];
 
         private readonly Queue<Clone> _clonesQueue = new(MaxClones);
-        private Dictionary<Boundary, Clone> _boundaryWithClone;
+        private Dictionary<Vector2, Clone> _boundaryWithClone;
         private Clone _cornerClone;
-        private HashSet<Boundary> _intersectedBoundaries;
+        private HashSet<Vector2> _intersectedBoundaries;
         private ICloneService _cloneService;
 
         [Inject]
         public void Construct(IMapBoundaries mapBoundariesService, ICloneService cloneService)
         {
             _cloneService = cloneService;
-            _intersectedBoundaries = new HashSet<Boundary>(mapBoundariesService.BoundariesCount);
-            _boundaryWithClone = new Dictionary<Boundary, Clone>(mapBoundariesService.BoundariesCount);
+            _intersectedBoundaries = new HashSet<Vector2>(mapBoundariesService.BoundariesCount);
+            _boundaryWithClone = new Dictionary<Vector2, Clone>(mapBoundariesService.BoundariesCount);
         }
 
         private void Start()
@@ -48,29 +48,29 @@ namespace NewTankio.Code.Gameplay.Player
             _boundaryObserver.BoundaryExited -= OnBoundaryExited;
         }
 
-        private void OnBoundaryEntered(Boundary boundary)
+        private void OnBoundaryEntered(Vector2 direction)
         {
-            _intersectedBoundaries.Remove(boundary);
+            _intersectedBoundaries.Remove(direction);
 
-            DeactivateBoundaryClone(boundary);
+            DeactivateBoundaryClone(direction);
 
             if (!IsSecondBoundaryEntered())
                 DeactivateCornerClone();
         }
 
-        private void OnBoundaryExited(Boundary boundary)
+        private void OnBoundaryExited(Vector2 direction)
         {
-            _intersectedBoundaries.Add(boundary);
+            _intersectedBoundaries.Add(direction);
 
-            ActivateBoundaryClone(in boundary, transform.position, GetBoundaryClone(in boundary));
+            ActivateBoundaryClone(in direction, GetBoundaryClone(in direction));
 
             if (!IsSecondBoundaryExited())
                 ActivateCornerClone(_intersectedBoundaries.First(), _intersectedBoundaries.Last(), GetCornerClone());
         }
 
-        private void DeactivateBoundaryClone(Boundary boundary)
+        private void DeactivateBoundaryClone(Vector2 direction)
         {
-            if (_boundaryWithClone.TryGetValue(boundary, out Clone clone))
+            if (_boundaryWithClone.TryGetValue(direction, out Clone clone))
                 clone.Deactivate();
             _clonesQueue.Enqueue(clone);
         }
@@ -84,10 +84,10 @@ namespace NewTankio.Code.Gameplay.Player
             _clonesQueue.Enqueue(_cornerClone);
         }
 
-        private Clone GetBoundaryClone(in Boundary boundary)
+        private Clone GetBoundaryClone(in Vector2 direction)
         {
             Clone clone = _clonesQueue.Dequeue();
-            _boundaryWithClone[boundary] = clone;
+            _boundaryWithClone[direction] = clone;
             return clone;
         }
 
@@ -100,11 +100,11 @@ namespace NewTankio.Code.Gameplay.Player
         private bool IsSecondBoundaryExited() => 
             _intersectedBoundaries.Count != 2;
 
-        private void ActivateBoundaryClone(in Boundary boundary, in Vector2 position, Clone clone) => 
-            clone.Activate(_cloneService.GetClonePosition(position, boundary));
+        private void ActivateBoundaryClone(in Vector2 direction, Clone clone) => 
+            clone.Activate(_cloneService.GetClonePosition(direction));
 
-        private void ActivateCornerClone(in Boundary firstBoundary, in Boundary secondBoundary, Clone clone) => 
-            clone.Activate(_cloneService.GetCornerClonePosition(firstBoundary, secondBoundary));
+        private void ActivateCornerClone(in Vector2 firstDirection, in Vector2 secondDirection, Clone clone) => 
+            clone.Activate(_cloneService.GetCornerClonePosition(firstDirection, secondDirection));
     }
 
 }

@@ -6,11 +6,9 @@ namespace NewTankio.Code.Services.CoordinateWrapper
     {
         private readonly IMapBoundaries _boundaries;
 
-        public RectangleWrapper(IMapBoundaries boundaries)
-        {
+        public RectangleWrapper(IMapBoundaries boundaries) => 
             _boundaries = boundaries;
-        }
-        
+
         public Vector2 WrapPoint(in Vector2 point) 
             => new(
                 WrapCoordinate(point.x, _boundaries.MinPoint.x, _boundaries.MaxPoint.x), 

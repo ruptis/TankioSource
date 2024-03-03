@@ -8,7 +8,7 @@ namespace NewTankio.Code.Gameplay.Player
         private void Start()
         {
             BoundaryObserver.BoundaryEntered += _ => Debug.Log("Entered");
-            BoundaryObserver.BoundaryExited += boundary => Debug.Log("Exited " + boundary.Normal);
+            BoundaryObserver.BoundaryExited += boundary => Debug.Log("Exited " + boundary);
         }
     }
 }

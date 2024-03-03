@@ -8,29 +8,29 @@ namespace NewTankio.Code.Gameplay.Player
     public sealed class BoundaryObserver : MonoBehaviour
     {
         private IMapBoundaries _mapBoundaries;
-        private Boundary[] _boundariesBuffer;
-        private List<Boundary> _currentIntersectedBoundaries;
-        private List<Boundary> _previousIntersectedBoundaries;
-        private HashSet<Boundary> _tempHashSet;
+        private Vector2[] _directionsBuffer;
+        private List<Vector2> _currentIntersectedBoundariesDirections;
+        private List<Vector2> _previousIntersectedBoundariesDirections;
+        private HashSet<Vector2> _tempHashSet;
 
         [SerializeField] private RectAreaMarker _rectArea;
 
-        public event Action<Boundary> BoundaryExited;
-        public event Action<Boundary> BoundaryEntered;
+        public event Action<Vector2> BoundaryExited;
+        public event Action<Vector2> BoundaryEntered;
 
         [Inject]
         public void Construct(IMapBoundaries mapBoundaries)
         {
             _mapBoundaries = mapBoundaries;
-            _boundariesBuffer = new Boundary[_mapBoundaries.BoundariesCount];
-            _currentIntersectedBoundaries = new List<Boundary>(_mapBoundaries.BoundariesCount);
-            _previousIntersectedBoundaries = new List<Boundary>(_mapBoundaries.BoundariesCount);
-            _tempHashSet = new HashSet<Boundary>(_mapBoundaries.BoundariesCount);
+            _directionsBuffer = new Vector2[_mapBoundaries.BoundariesCount];
+            _currentIntersectedBoundariesDirections = new List<Vector2>(_mapBoundaries.BoundariesCount);
+            _previousIntersectedBoundariesDirections = new List<Vector2>(_mapBoundaries.BoundariesCount);
+            _tempHashSet = new HashSet<Vector2>(_mapBoundaries.BoundariesCount);
         }
         
         private void LateUpdate()
         {
-            var count = _mapBoundaries.OverlapBoundaries(_rectArea.Rect, _boundariesBuffer);
+            var count = _mapBoundaries.OverlapBoundaries(_rectArea.Rect, _directionsBuffer);
             
             UpdateCurrentSet(count);
             InvokeEntered();
@@ -41,34 +41,34 @@ namespace NewTankio.Code.Gameplay.Player
         private void InvokeEntered()
         {
             _tempHashSet.Clear();
-            _tempHashSet.UnionWith(_previousIntersectedBoundaries);
-            _tempHashSet.ExceptWith(_currentIntersectedBoundaries);
+            _tempHashSet.UnionWith(_previousIntersectedBoundariesDirections);
+            _tempHashSet.ExceptWith(_currentIntersectedBoundariesDirections);
             
-            foreach (Boundary boundary in _tempHashSet)
-                BoundaryEntered?.Invoke(boundary);
+            foreach (Vector2 direction in _tempHashSet)
+                BoundaryEntered?.Invoke(direction);
         }
         
         private void InvokeExited()
         {
             _tempHashSet.Clear();
-            _tempHashSet.UnionWith(_currentIntersectedBoundaries);
-            _tempHashSet.ExceptWith(_previousIntersectedBoundaries);
+            _tempHashSet.UnionWith(_currentIntersectedBoundariesDirections);
+            _tempHashSet.ExceptWith(_previousIntersectedBoundariesDirections);
 
-            foreach (Boundary boundary in _tempHashSet)
-                BoundaryExited?.Invoke(boundary);
+            foreach (Vector2 direction in _tempHashSet)
+                BoundaryExited?.Invoke(direction);
         }
 
         private void UpdatePreviusSet()
         {
-            _previousIntersectedBoundaries.Clear();
-            _previousIntersectedBoundaries.AddRange(_currentIntersectedBoundaries);
+            _previousIntersectedBoundariesDirections.Clear();
+            _previousIntersectedBoundariesDirections.AddRange(_currentIntersectedBoundariesDirections);
         }
 
         private void UpdateCurrentSet(int count)
         {
-            _currentIntersectedBoundaries.Clear();
+            _currentIntersectedBoundariesDirections.Clear();
             for (var i = 0; i < count; i++)
-                _currentIntersectedBoundaries.Add(_boundariesBuffer[i]);
+                _currentIntersectedBoundariesDirections.Add(_directionsBuffer[i]);
         }
     }
 

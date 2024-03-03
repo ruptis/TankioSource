@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using NewTankio.Code.Tools.StateMachine;
+﻿using NewTankio.Code.Tools.StateMachine;
 using VContainer;
 namespace NewTankio.Code.Infrastructure.GameStates
 {
@@ -8,14 +6,10 @@ namespace NewTankio.Code.Infrastructure.GameStates
     {
         private readonly IObjectResolver _resolver;
         
-        public GameStateFactory(IObjectResolver resolver)
-        {
+        public GameStateFactory(IObjectResolver resolver) => 
             _resolver = resolver;
-        }
 
-        public TState GetState<TState>() where TState : class, IGameState, IExitable
-        {
-            return _resolver.Resolve<TState>();
-        }
+        public TState GetState<TState>() where TState : class, IGameState, IExitable => 
+            _resolver.Resolve<TState>();
     }
 }

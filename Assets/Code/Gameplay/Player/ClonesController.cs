@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using NewTankio.Code.Services.CloneService;
 using NewTankio.Code.Services.MapBoundaries;
 using UnityEngine;
 using VContainer;
@@ -16,14 +17,14 @@ namespace NewTankio.Code.Gameplay.Player
         private Dictionary<Boundary, Clone> _boundaryWithClone;
         private Clone _cornerClone;
         private HashSet<Boundary> _intersectedBoundaries;
-        private IMapBoundaries _mapBoundariesService;
+        private ICloneService _cloneService;
 
         [Inject]
-        public void Construct(IMapBoundaries mapBoundariesService)
+        public void Construct(IMapBoundaries mapBoundariesService, ICloneService cloneService)
         {
-            _mapBoundariesService = mapBoundariesService;
-            _intersectedBoundaries = new HashSet<Boundary>(_mapBoundariesService.BoundariesCount);
-            _boundaryWithClone = new Dictionary<Boundary, Clone>(_mapBoundariesService.BoundariesCount);
+            _cloneService = cloneService;
+            _intersectedBoundaries = new HashSet<Boundary>(mapBoundariesService.BoundariesCount);
+            _boundaryWithClone = new Dictionary<Boundary, Clone>(mapBoundariesService.BoundariesCount);
         }
 
         private void Start()
@@ -60,18 +61,11 @@ namespace NewTankio.Code.Gameplay.Player
         private void OnBoundaryExited(Boundary boundary)
         {
             _intersectedBoundaries.Add(boundary);
-            Vector2 position = transform.position;
 
-            ProcessBoundaryClone(boundary, position, GetBoundaryClone(boundary));
+            ActivateBoundaryClone(in boundary, transform.position, GetBoundaryClone(in boundary));
 
             if (!IsSecondBoundaryExited())
-                ProcessCornerClone(_intersectedBoundaries.First(), _intersectedBoundaries.Last(), GetCornerClone());
-        }
-
-        private void DeactivateCornerClone()
-        {
-            _cornerClone.Deactivate();
-            _clonesQueue.Enqueue(_cornerClone);
+                ActivateCornerClone(_intersectedBoundaries.First(), _intersectedBoundaries.Last(), GetCornerClone());
         }
 
         private void DeactivateBoundaryClone(Boundary boundary)
@@ -80,13 +74,17 @@ namespace NewTankio.Code.Gameplay.Player
                 clone.Deactivate();
             _clonesQueue.Enqueue(clone);
         }
+        
+        private bool IsSecondBoundaryEntered() => 
+            _intersectedBoundaries.Count != 1;
 
-        private bool IsSecondBoundaryEntered()
+        private void DeactivateCornerClone()
         {
-            return _intersectedBoundaries.Count != 1;
+            _cornerClone.Deactivate();
+            _clonesQueue.Enqueue(_cornerClone);
         }
 
-        private Clone GetBoundaryClone(Boundary boundary)
+        private Clone GetBoundaryClone(in Boundary boundary)
         {
             Clone clone = _clonesQueue.Dequeue();
             _boundaryWithClone[boundary] = clone;
@@ -99,51 +97,14 @@ namespace NewTankio.Code.Gameplay.Player
             return _cornerClone;
         }
 
-        private bool IsSecondBoundaryExited()
-        {
-            return _intersectedBoundaries.Count != 2;
-        }
+        private bool IsSecondBoundaryExited() => 
+            _intersectedBoundaries.Count != 2;
 
-        private void ProcessBoundaryClone(Boundary boundary, Vector2 position, in Clone clone)
-        {
-            Vector2 closestPoint = boundary.ClosestPoint(position);
-            Vector2 oppositeClosestPoint = GetOppositeClosestPoint(boundary, position);
-            Vector2 direction = GetDirection(oppositeClosestPoint, closestPoint);
-            var distance = Vector2.Distance(oppositeClosestPoint, closestPoint);
-            Vector3 clonePosition = GetClonePosition(direction, distance);
-            clone.Activate(clonePosition);
-        }
+        private void ActivateBoundaryClone(in Boundary boundary, in Vector2 position, Clone clone) => 
+            clone.Activate(_cloneService.GetClonePosition(position, boundary));
 
-        private void ProcessCornerClone(Boundary firstBoundary, Boundary secondBoundary, in Clone clone)
-        {
-            Vector2 cornerPoint = _mapBoundariesService.GetIntersectionPoint(firstBoundary, secondBoundary);
-            Vector2 oppositeCornerPoint = GetOppositeCornerPoint(firstBoundary, secondBoundary);
-            Vector2 cornerDirection = GetDirection(oppositeCornerPoint, cornerPoint);
-            var distanceToCorner = Vector2.Distance(oppositeCornerPoint, cornerPoint);
-            Vector3 cornerPosition = GetClonePosition(cornerDirection, distanceToCorner);
-            clone.Activate(cornerPosition);
-        }
-
-        private Vector2 GetOppositeClosestPoint(Boundary boundary, Vector2 position)
-        {
-            Boundary oppositeBoundary = _mapBoundariesService.GetOppositeBoundary(boundary);
-            Vector2 oppositeClosestPoint = oppositeBoundary.ClosestPoint(position);
-            return oppositeClosestPoint;
-        }
-
-        private Vector2 GetOppositeCornerPoint(Boundary firstBoundary, Boundary secondBoundary)
-        {
-            Boundary firstOppositeBoundary = _mapBoundariesService.GetOppositeBoundary(firstBoundary);
-            Boundary secondOppositeBoundary = _mapBoundariesService.GetOppositeBoundary(secondBoundary);
-            Vector2 oppositeCornerPoint = _mapBoundariesService.GetIntersectionPoint(firstOppositeBoundary, secondOppositeBoundary);
-            return oppositeCornerPoint;
-        }
-        
-        private static Vector3 GetClonePosition(Vector2 direction, float distance) 
-            => direction * distance;
-
-        private static Vector2 GetDirection(Vector2 firstPoint, Vector2 secondPoint) 
-            => (firstPoint - secondPoint).normalized;
+        private void ActivateCornerClone(in Boundary firstBoundary, in Boundary secondBoundary, Clone clone) => 
+            clone.Activate(_cloneService.GetCornerClonePosition(firstBoundary, secondBoundary));
     }
 
 }

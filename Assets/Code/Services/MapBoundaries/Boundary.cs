@@ -26,12 +26,6 @@ namespace NewTankio.Code.Services.MapBoundaries
             return projection < boundsExtentProjection;
         }
 
-        public bool IsOutside(in Vector2 point) => 
-            GetDistanceToBoundary(point) > 0f;
-
-        public bool IsInside(in Vector2 point) => 
-            GetDistanceToBoundary(point) <= 0f;
-
         public Vector2 ClosestPoint(in Vector2 point) => 
             point - _normal * GetDistanceToBoundary(point);
 

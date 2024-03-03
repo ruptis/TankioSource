@@ -1,4 +1,5 @@
 ﻿using NewTankio.Code.Services.CameraCaster;
+using NewTankio.Code.Services.CloneService;
 using NewTankio.Code.Services.CoordinateWrapper;
 using NewTankio.Code.Services.MapBoundaries;
 using UnityEngine;
@@ -17,7 +18,8 @@ namespace NewTankio.Code.Infrastructure
             builder.RegisterInstance(_camera);
             builder.RegisterInstance<IMapBoundaries>(new MapBoundariesService(_background.bounds));
             builder.Register<ICameraCaster, CameraCaster>(Lifetime.Singleton);
-            builder.Register<ICoordinateWrapper, CoordinateWrapper>(Lifetime.Singleton);
+            builder.Register<ICoordinateWrapper, RectangleWrapper>(Lifetime.Singleton);
+            builder.Register<ICloneService, CloneService>(Lifetime.Singleton);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace NewTankio.Code.Gameplay.Player
+﻿namespace NewTankio.Code.Gameplay.Player.Mobility
 {
     public static class SpringUtils
     {

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace NewTankio.Code.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player.Mobility
 {
     public sealed class RandomMovement : MonoBehaviour
     {

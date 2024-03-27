@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace NewTankio.Code.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player.Mobility
 {
     public sealed class Movement : MonoBehaviour
     {
@@ -8,6 +8,8 @@ namespace NewTankio.Code.Gameplay.Player
 
         public float Halflife = 0.5f;
         public float Speed = 1.0f;
+
+        public Vector2 CurrentVelocity => _damper.Velocity;
 
         private void Update()
         {

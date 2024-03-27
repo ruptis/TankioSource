@@ -12,7 +12,7 @@ namespace NewTankio.Code.Infrastructure
         
         public void Start()
         {
-            _stateMachine.Enter<GameplayInitializationState>();    
+            _stateMachine.Enter<GameplayInitializationState>();  
         }
     }
 }

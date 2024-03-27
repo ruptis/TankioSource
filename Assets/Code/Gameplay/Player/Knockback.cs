@@ -3,7 +3,7 @@ namespace NewTankio.Code.Gameplay.Player
 {
     public sealed class Knockback : MonoBehaviour
     {
-        public Movement Movement;
+        public Mobility.Movement Movement;
         public TriggerObserver TriggerObserver;
         public float BounceFactor = 1f;
 

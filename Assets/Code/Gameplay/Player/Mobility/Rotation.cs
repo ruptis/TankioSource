@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
-namespace NewTankio.Code.Gameplay.Player
+namespace NewTankio.Code.Gameplay.Player.Mobility
 {
     public class Rotation : MonoBehaviour
     {
         private float _rotationAngle;
-        private Vector2 _desiredDirection;
         private RotationDamper _rotationDamper;
 
         public float HalfLife = 0.3f;
+
+        public Vector2 CurrentVelocity => transform.up * (_rotationDamper.AngularVelocity / Mathf.Rad2Deg);
 
         private void Update()
         {

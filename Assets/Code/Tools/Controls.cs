@@ -46,6 +46,24 @@ namespace NewTankio.Code.Tools
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""5dbc518d-0dec-442f-ad00-65a6e55073c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Debug"",
+                    ""type"": ""Button"",
+                    ""id"": ""80f0b195-f32d-4002-9a02-f5f8cba391dd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -114,6 +132,28 @@ namespace NewTankio.Code.Tools
                     ""action"": ""Mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5bf2e4bd-0dac-45fc-bdb4-a71777c07d5b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffbcd9e5-d64d-4cc4-8973-a6bb535ec060"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -124,6 +164,8 @@ namespace NewTankio.Code.Tools
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
             m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
+            m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+            m_Player_Debug = m_Player.FindAction("Debug", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -187,12 +229,16 @@ namespace NewTankio.Code.Tools
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Movement;
         private readonly InputAction m_Player_Mouse;
+        private readonly InputAction m_Player_Fire;
+        private readonly InputAction m_Player_Debug;
         public struct PlayerActions
         {
             private @Controls m_Wrapper;
             public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_Player_Movement;
             public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
+            public InputAction @Fire => m_Wrapper.m_Player_Fire;
+            public InputAction @Debug => m_Wrapper.m_Player_Debug;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -208,6 +254,12 @@ namespace NewTankio.Code.Tools
                 @Mouse.started += instance.OnMouse;
                 @Mouse.performed += instance.OnMouse;
                 @Mouse.canceled += instance.OnMouse;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @Debug.started += instance.OnDebug;
+                @Debug.performed += instance.OnDebug;
+                @Debug.canceled += instance.OnDebug;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -218,6 +270,12 @@ namespace NewTankio.Code.Tools
                 @Mouse.started -= instance.OnMouse;
                 @Mouse.performed -= instance.OnMouse;
                 @Mouse.canceled -= instance.OnMouse;
+                @Fire.started -= instance.OnFire;
+                @Fire.performed -= instance.OnFire;
+                @Fire.canceled -= instance.OnFire;
+                @Debug.started -= instance.OnDebug;
+                @Debug.performed -= instance.OnDebug;
+                @Debug.canceled -= instance.OnDebug;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -239,6 +297,8 @@ namespace NewTankio.Code.Tools
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnMouse(InputAction.CallbackContext context);
+            void OnFire(InputAction.CallbackContext context);
+            void OnDebug(InputAction.CallbackContext context);
         }
     }
 }

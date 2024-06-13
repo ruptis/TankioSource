@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d68fa7dac04290b506083b2fe19037, type: 3}
+  m_Name: MapData
+  m_EditorClassIdentifier: 
+  BoundariesStaticData:
+    LocalBoundaryPositions:
+    - {x: -6.760002, y: -6, z: 0}
+    - {x: -2.9900017, y: -14.29, z: 0}
+    - {x: 5, y: -17.6, z: 0}
+    - {x: 13.57, y: -14.24, z: 0}
+    - {x: 17.29, y: -6, z: 0}
+    - {x: 13.68, y: 2.92, z: 0}
+    - {x: 5, y: 6.4, z: 0}
+    - {x: -3.2599983, y: 2.81, z: 0}
+    LocalBoundaryNormals:
+    - {x: -1, y: -0.000000119209275, z: 0}
+    - {x: -0.70710665, y: -0.7071069, z: 0}
+    - {x: 0.00000008742278, y: -1, z: 0}
+    - {x: 0.70710677, y: -0.7071069, z: 0}
+    - {x: 1, y: 0.000000059604638, z: 0}
+    - {x: 0.70710677, y: 0.7071068, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: -0.70710677, y: 0.7071068, z: 0}

@@ -50,15 +50,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708602713132194752, guid: 5906e7ab65dc697498f7d5396d4c7de8, type: 3}
       propertyPath: m_Name
-      value: BulletGraphics Variant
+      value: BulletCloneGraphics
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 484816826192380897, guid: 5906e7ab65dc697498f7d5396d4c7de8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8708602713132194752, guid: 5906e7ab65dc697498f7d5396d4c7de8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7182065343216135045}
+    - targetCorrespondingSourceObject: {fileID: 8708602713132194752, guid: 5906e7ab65dc697498f7d5396d4c7de8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3408313985674929438}
   m_SourcePrefab: {fileID: 100100000, guid: 5906e7ab65dc697498f7d5396d4c7de8, type: 3}
 --- !u!1 &5308287765658063653 stripped
 GameObject:
@@ -77,3 +81,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b649d03025d4af180f0eb675a6a42b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!255 &3408313985674929438
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308287765658063653}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0

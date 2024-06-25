@@ -403,6 +403,9 @@ GameObject:
   - component: {fileID: 6461000987605322999}
   - component: {fileID: 6184992908061863909}
   - component: {fileID: 2593925108802034838}
+  - component: {fileID: 7164759840418169454}
+  - component: {fileID: 3924792205727748218}
+  - component: {fileID: 6934143550230874217}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -514,6 +517,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectArea: {fileID: 6862450926427090898}
+--- !u!114 &7164759840418169454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051262250665983702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e2760f7ecf45e7abba59eead6850e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 3924792205727748218}
+--- !u!114 &3924792205727748218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051262250665983702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cddf65b99b474cba8ceab6361db1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _max: 200
+--- !u!114 &6934143550230874217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051262250665983702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2651072f2640229379bd80e95f78da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 3924792205727748218}
 --- !u!1 &6719931363984707960
 GameObject:
   m_ObjectHideFlags: 0

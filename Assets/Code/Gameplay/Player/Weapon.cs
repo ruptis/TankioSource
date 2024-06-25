@@ -2,6 +2,7 @@
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+
 namespace NewTankio.Code.Gameplay.Player
 {
     public class Weapon : MonoBehaviour
@@ -13,19 +14,19 @@ namespace NewTankio.Code.Gameplay.Player
         public float FireRate;
         public float BulletSpeed;
         public float BulletHalfSpeed;
-        
+
         public bool ConsiderCharacterVelocity;
-        
+
         private float _fireTimer;
-        
+
         private IObjectResolver _resolver;
-        
+
         [Inject]
         public void Construct(IObjectResolver resolver)
         {
             _resolver = resolver;
         }
-        
+
         private void Update()
         {
             _fireTimer += Time.deltaTime;
@@ -42,6 +43,7 @@ namespace NewTankio.Code.Gameplay.Player
                 bullet.Fire(bulletVelocity);
             }
         }
+
         private Vector2 BulletVelocity
         {
             get
@@ -52,6 +54,7 @@ namespace NewTankio.Code.Gameplay.Player
                     bulletVelocity += CharacterMovement.CurrentVelocity;
                     bulletVelocity += CharacterRotation.CurrentVelocity;
                 }
+
                 return bulletVelocity;
             }
         }

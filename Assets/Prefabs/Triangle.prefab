@@ -255,6 +255,9 @@ GameObject:
   - component: {fileID: 7628141772840551046}
   - component: {fileID: 2006274623756483879}
   - component: {fileID: 4307319277001860960}
+  - component: {fileID: 3069027745640113455}
+  - component: {fileID: 317453555254597742}
+  - component: {fileID: 6410821902193159003}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -366,6 +369,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectArea: {fileID: 8559475283090913666}
+--- !u!114 &3069027745640113455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778255122610935583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e2760f7ecf45e7abba59eead6850e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 317453555254597742}
+--- !u!114 &317453555254597742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778255122610935583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cddf65b99b474cba8ceab6361db1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _max: 300
+--- !u!114 &6410821902193159003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778255122610935583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2651072f2640229379bd80e95f78da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 317453555254597742}
 --- !u!1 &6041018188321951779
 GameObject:
   m_ObjectHideFlags: 0

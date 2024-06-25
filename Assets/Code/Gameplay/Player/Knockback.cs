@@ -13,14 +13,17 @@ namespace NewTankio.Code.Gameplay.Player
         private void OnDisable() 
             => TriggerObserver.TriggerStayed -= OnTriggerStayed;
 
-        private void OnTriggerStayed(Collider2D thisCollider, Collider2D otherCollider)
+        private void OnTriggerStayed(ClonedObject thisObject, ClonedObject otherObject)
         {
-            Vector3 direction = (thisCollider.transform.position - otherCollider.transform.position).normalized;
-            Vector3 velocity = direction * BounceFactor;
-            _debugVelocity = velocity;
-            _debugTransformPosition = thisCollider.transform.position;
-            _debugOtherColliderPosition = otherCollider.transform.position;
-            Movement.AddVelocity(velocity);
+            if (otherObject.TryGetComponent(out Knockback knockback))
+            {
+                Vector3 direction = (thisObject.transform.position - otherObject.transform.position).normalized;
+                Vector3 velocity = direction * (BounceFactor + knockback.BounceFactor);
+                _debugVelocity = velocity;
+                _debugTransformPosition = thisObject.transform.position;
+                _debugOtherColliderPosition = otherObject.transform.position;
+                Movement.AddVelocity(velocity);
+            }
         }
 
         private Vector3 _debugVelocity;
